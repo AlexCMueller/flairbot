@@ -26,10 +26,10 @@ async def on_message(message):
         elif not isDM: # this should be a DM only command
             await client.send_message(message.channel, "This command is DM only!") # may remove this
 
-        elif len(args) < 2:
+        elif len(args) < 2: # make sure all the arguments are there
             await client.send_message(message.channel, "Please include a role name!")
 
-        elif not args[1] in botinfo.roleList:
+        elif not args[1] in botinfo.roleList: # make sure player is requesting a valid channel
             await client.send_message(message.channel, args[1] + " is not a valid role!")
 
         else:
@@ -38,13 +38,13 @@ async def on_message(message):
                 if role.name in botinfo.roleList:
                     oldRoles.append(role) # This loop determines the roles that the user already has
             
-            await client.remove_roles(serverMember, *oldRoles)
+            await client.remove_roles(serverMember, *oldRoles) # remove old roles
 
             for role in server.roles:
                 if role.name == args[1]:
                     newRole = role
 
-            await client.add_roles(serverMember, newRole)
+            await client.add_roles(serverMember, newRole) # add new role
             
             await client.send_message(message.channel, "The role has been sucessfully granted!")
 
