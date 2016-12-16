@@ -24,7 +24,7 @@ async def on_message(message):
             await client.send_message(message.channel, "You are not in the server!")
 
         elif not isDM: # this should be a DM only command
-            await client.send_message(message.channel, "This command is DM only!") # may remove this
+            await client.send_message(message.author, "The !getrole command is DM only!")
 
         elif len(args) < 2: # make sure all the arguments are there
             await client.send_message(message.channel, "Please include a role name!")
