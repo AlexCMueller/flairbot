@@ -29,7 +29,7 @@ async def on_message(message):
         elif len(args) < 2: # make sure all the arguments are there
             await client.send_message(message.channel, "Please include a role name!")
 
-        elif not args[1] in botinfo.roleList: # make sure player is requesting a valid channel
+        elif not args[1] in botinfo.roleList: # make sure player is requesting a valid role
             await client.send_message(message.channel, args[1] + " is not a valid role!")
 
         else:
